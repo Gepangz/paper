@@ -12,7 +12,7 @@ export default {
 <style scoped>
 iframe {
   margin-top: 30px;
-  width: 100%;
+  width: 80%;
   height: 800px;
 }
 </style>

@@ -1,4 +1,5 @@
 import axios from 'axios'
+import handleCookie from '../unit/cookie'
 
 const state = {
   papers: [],
@@ -15,6 +16,7 @@ const mutations = {
 
 const actions = {
   syncInfor: ({commit}, account) => {
+    account = account === undefined ? handleCookie.get('account') : account
     if (account) {
       axios.get('../back/get.php', {
         params: {

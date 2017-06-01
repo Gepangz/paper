@@ -23,7 +23,7 @@ import {mapGetters} from 'vuex'
 export default {
   data () {
     return {
-      src: 'https://www.baidu.com'
+      src: 'https://xueshu.baidu.com/'
     }
   },
   computed: mapGetters([
@@ -56,6 +56,7 @@ export default {
 <style scoped>
 div {
   width: 100%;
+  background: #e5e5e5;
 }
 label {
   position: relative;

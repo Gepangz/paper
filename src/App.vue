@@ -27,6 +27,9 @@ export default {
       return this.$store.state.userState.logState
     }
   },
+  created () {
+    this.$store.commit('storeUser')
+  },
   components: {
     Panel,
     State
@@ -57,6 +60,8 @@ export default {
   -moz-transition: margin-left 1s;
   -webkit-transition: margin-left 1s;
   -o-transition: margin-left 1s;
+
+  box-shadow: 0 0 10px #000;
 }
 .nav::after {
   position: absolute;

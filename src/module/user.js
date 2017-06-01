@@ -1,4 +1,5 @@
 import axios from 'axios'
+import handleCookie from '../unit/cookie'
 
 const state = {
   logState: true,
@@ -7,6 +8,15 @@ const state = {
 }
 
 const mutations = {
+  storeUser: ({commit}) => {
+    let account = handleCookie.get('account')
+    let password = handleCookie.get('password')
+    if (account && password) {
+      state.logState = false
+      state.account = account
+      state.password = password
+    }
+  },
   userIn (state, information) {
     state.account = information.account
     state.password = information.password

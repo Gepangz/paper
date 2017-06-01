@@ -12,6 +12,7 @@
     </div>
 </template>
 <script>
+import handlecookie from '../unit/cookie'
 
 export default {
   data () {
@@ -29,6 +30,8 @@ export default {
     },
     logIn: function (event) {
       if (this.account && this.password) {
+        handlecookie.set('account', this.account, 7)
+        handlecookie.set('password', this.password, 7)
         this.$store.dispatch('logIn').then(() => {
           this.$store.dispatch('syncInfor', this.account)
         })

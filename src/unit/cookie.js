@@ -1,38 +1,29 @@
-let cookie = function () {
-  let cookie = document.cookie
-  let get = function (key) {
+let handleCookie = {
+  get: function (key) {
+    let cookie = document.cookie
     let start = cookie.indexOf(key + '=')
     if (start !== -1) {
       let last = cookie.indexOf(';', start + key.length + 1)
       if (last === -1) {
         last = cookie.length
       }
-      return unescape(cookie.substring(start, last))
+      return unescape(cookie.substring(start + key.length + 1, last))
     } else {
       return ''
     }
-  }
-  let set = function (key, value, expiredays) {
-    if (get(key) !== '') {
-      let now = new Date()
-      let lastTime = new Date(now.getDate() + expiredays)
-      document.cookie = encodeURIComponent(key) + '=' + escape(value) +
-      ((expiredays === null) ? '' : ';expires=' + lastTime.toGMTString())
-    } else {
-      return false
-    }
-  }
-  let del = function (key) {
-    set(key, '', -1)
-  }
-
-  return {
-    get: get,
-    set: set,
-    del: del
+  },
+  set: function (key, value, expiredays) {
+    let exdate = new Date()
+    exdate.setDate(exdate.getDate() + expiredays)
+    document.cookie = key + '=' + escape(value) + ((expiredays === null) ? '' : ';expires=' + exdate.toGMTString())
+  },
+  del: function (key) {
+    this.set(key, '', -1)
   }
 }
 
 export default {
-  cookie: cookie
+  set: handleCookie.set,
+  get: handleCookie.get,
+  del: handleCookie.del
 }

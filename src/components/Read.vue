@@ -50,17 +50,24 @@ export default {
 }
 </script>
 <style scoped>
+div {
+    background: #e5e5e5;
+}
+table {
+    display: inline-block;
+    width: auto;
+    height: 150px;
+    overflow: scroll;
+    background: #f5f5f5;
+}
 td {
     width: 450px;
     padding: 10px 10px;
     word-wrap: normal;
-    border: 1px solid #000;
+    border-bottom: 1px solid #000;
 }
 iframe {
     width: 100%;
     height: 800px;
-}
-table {
-    display: inline-block;
 }
 </style>
